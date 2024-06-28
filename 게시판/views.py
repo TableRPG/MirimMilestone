@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, CreateView, __all__
 
 from 게시판.models import Post
@@ -17,7 +18,9 @@ class PostDetail(DetailView):
 class PostCreate(CreateView):
     model = Post
     fields = ['title', 'content']
-    success_url = reverse_lazy('post:post_list')
+    template_name_suffix = '_create'
+    template_name = 'post/post_create.html'
+    success_url = reverse_lazy('게시판:post_list')
 
     def form_valid(self, form):
         form.instance.ip = self.get_client_ip()
