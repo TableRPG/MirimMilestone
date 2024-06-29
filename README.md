@@ -10,3 +10,7 @@
 ### 역할
 기획 & 개발 & 디자인 : 김소희  
 기획 & 개발 & 디자인 : 이지인
+
+### 프로젝트 데모 영상
+https://github.com/TableRPG/MirimMilestone/assets/87001998/4133ec43-e590-43a5-8dea-63db690fac4f
+
