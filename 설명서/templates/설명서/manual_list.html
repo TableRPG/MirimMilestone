@@ -1,12 +1,9 @@
 <!-- templates/manual/manual_list.html -->
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ category.name }} - 미림마일스톤</title>
-</head>
-<body>
+{% block title %}{{ category.name }} - 미림마일스톤{% endblock %}
+
+{% block content %}
     <h1>{{ category.name }}</h1>
     <h2>글 목록</h2>
     <ul>
@@ -14,6 +11,5 @@
             <li><a href="{% url 'manual_detail' manual.id %}">{{ manual.title }}</a></li>
         {% endfor %}
     </ul>
-    <a href="{% url 'category_list' %}">메인화면으로 돌아가기</a>
-</body>
-</html>
+    <a href="{% url 'category_list' %}">메인터넌스화면으로 돌아가기</a>
+{% endblock %}
