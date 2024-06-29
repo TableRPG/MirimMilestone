@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <hr/>
+    <pre>{{ post.content }}</pre>
+    <hr/>
+    <h2>Comments</h2>
+    <button onclick="location.href='{% url '게시판:comment_create' post.pk %}'">답변 쓰기</button>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment.user_name }}</strong><br>
+                <pre>{{ comment.reply }}</pre>
+                <br/>
+            </li>
+        {% empty %}
+            <li>No comments yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
