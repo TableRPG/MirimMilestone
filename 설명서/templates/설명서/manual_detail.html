@@ -1,0 +1,15 @@
+<!-- templates/manual/manual_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ manual.title }} - 미림마일스톤</title>
+</head>
+<body>
+    <h1>{{ manual.title }}</h1>
+    <img src="{{ manual.image.url }}" alt="{{ manual.title }}">
+    <p>{{ manual.content }}</p>
+    <a href="javascript:history.back()">이전 화면으로 돌아가기</a>
+</body>
+</html>
