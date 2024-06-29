@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Post Detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}게시판 자세히{% endblock %}
+
+{% block content %}
     <h1>{{ post.title }}</h1>
     <hr/>
     <pre>{{ post.content }}</pre>
     <hr/>
+    <button onclick="location.href='{% url '게시판:post_list' %}'">질문글 목록</button>
     <h2>Comments</h2>
     <button onclick="location.href='{% url '게시판:comment_create' post.pk %}'">답변 쓰기</button>
     <ul>
@@ -19,8 +18,7 @@
                 <br/>
             </li>
         {% empty %}
-            <li>No comments yet.</li>
+            <li>아직 답변이 없습니다.</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

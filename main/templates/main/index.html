@@ -1,17 +1,14 @@
 <!-- main/templates/main/home.html -->
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>미림마일스톤</title>
-</head>
-<body>
+{% block title %}미림마일스톤{% endblock %}
+
+{% block content %}
     <h1>미림마일스톤</h1>
     <h2>최근 게시된 질문</h2>
     <ul>
-        {% for post in recent_posts %}
-        <li>{{ post.title }}</li>
+        {% for post in post_list %}
+            <li><a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a></li>
         {% endfor %}
     </ul>
 
@@ -21,5 +18,4 @@
         <li><a href="{% url 'manual_list_by_category' category.id %}">{{ category.name }}</a></li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
