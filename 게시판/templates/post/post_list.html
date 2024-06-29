@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Post List</title>
+</head>
+<body>
+    <h1>Post List</h1>
+    <ul>
+        {% for post in post_list %}
+            <li>
+                <a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url '게시판:post_create' %}">Create new post</a>
+</body>
+</html>
