@@ -3,10 +3,14 @@
 {% block title %}미림마일스톤{% endblock %}
 
 {% block content %}
-    <h2>메인터넌스 메뉴얼</h2>
-    <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'manual_list_by_category' category.id %}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+        <h2>메인터넌스 메뉴얼</h2>
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item">
+                    <a href="{% url 'manual_list_by_category' category.id %}">{{ category.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

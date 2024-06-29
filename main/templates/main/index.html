@@ -4,18 +4,37 @@
 {% block title %}미림마일스톤{% endblock %}
 
 {% block content %}
-    <h1>미림마일스톤</h1>
-    <h2>최근 게시된 질문</h2>
-    <ul>
-        {% for post in post_list %}
-            <li><a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="mb-4">미림마일스톤</h1>
 
-    <h2>메인터넌스 Shortcut</h2>
-    <ul>
-        {% for category in categories %}
-        <li><a href="{% url 'manual_list_by_category' category.id %}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">최근 게시된 질문</h2>
+                        <ul class="list-group list-group-flush">
+                            {% for post in post_list %}
+                                <li class="list-group-item"><a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a></li>
+                            {% empty %}
+                                <li class="list-group-item">게시된 질문이 없습니다.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">메인터넌스 Shortcut</h2>
+                        <ul class="list-group list-group-flush">
+                            {% for category in categories %}
+                                <li class="list-group-item"><a href="{% url 'manual_list_by_category' category.id %}">{{ category.name }}</a></li>
+                            {% empty %}
+                                <li class="list-group-item">등록된 메인터넌스가 없습니다.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

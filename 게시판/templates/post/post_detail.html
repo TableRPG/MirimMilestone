@@ -1,25 +1,43 @@
+<!-- 게시판/templates/게시판/post_detail.html -->
+
 {% extends 'base.html' %}
 
-{% block title %}게시판 자세히{% endblock %}
+{% block title %}게시판 자세히 - {{ post.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.created_at }}</p>
-    <hr/>
-    <pre>{{ post.content }}</pre>
-    <hr/>
-    <button onclick="location.href='{% url '게시판:post_list' %}'">질문글 목록</button>
-    <h2>Comments</h2>
-    <button onclick="location.href='{% url '게시판:comment_create' post.pk %}'">답변 쓰기</button>
-    <ul>
-        {% for comment in comments %}
-            <li>
-                <p><strong>{{ comment.user_name }}</strong> {{ comment.created_at }}</p>
-                <pre>{{ comment.reply }}</pre>
-                <br/>
-            </li>
-        {% empty %}
-            <li>아직 답변이 없습니다.</li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <p class="card-subtitle mb-2 text-muted">{{ post.created_at }}</p>
+                        <hr>
+                        <p class="card-text"><pre>{{ post.content }}</pre></p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3 class="card-title">Comments</h3>
+                        <a href="{% url '게시판:post_list' %}" class="btn btn-primary">질문글 목록</a>
+                        <a href="{% url '게시판:comment_create' post.pk %}" class="btn btn-success">답변 쓰기</a>
+                        <ul class="list-unstyled">
+                            {% for comment in comments %}
+                                <li class="media mt-3">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{ comment.user_name }}</h5>
+                                        <p>{{ comment.created_at }}</p>
+                                        <p>{{ comment.reply }}</p>
+                                    </div>
+                                </li>
+                            {% empty %}
+                                <li class="text-muted">아직 답변이 없습니다.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

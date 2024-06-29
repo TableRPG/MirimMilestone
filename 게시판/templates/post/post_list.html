@@ -4,12 +4,20 @@
 
 {% block content %}
     <h1>질문글 리스트</h1>
-    <ul>
+    <a href="{% url '게시판:post_create' %}" class="btn btn-primary" style="margin-bottom: 30px">질문글 작성하기</a>
+    <div class="row">
         {% for post in post_list %}
-            <li>
-                <a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a>
-            </li>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url '게시판:post_detail' post.id %}">{{ post.title }}</a></h5>
+                        <p class="card-text">{{ post.content }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">작성일: {{ post.created_at }}</small>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-    <a href="{% url '게시판:post_create' %}">질문글 작성하기</a>
+    </div>
 {% endblock %}

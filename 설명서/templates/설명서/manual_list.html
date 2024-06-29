@@ -1,15 +1,24 @@
-<!-- templates/manual/manual_list.html -->
 {% extends 'base.html' %}
 
 {% block title %}{{ category.name }} - 미림마일스톤{% endblock %}
 
 {% block content %}
-    <h1>{{ category.name }}</h1>
-    <h2>글 목록</h2>
-    <ul>
-        {% for manual in manuals %}
-            <li><a href="{% url 'manual_detail' manual.id %}">{{ manual.title }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'category_list' %}">메인터넌스화면으로 돌아가기</a>
+    <div class="container mt-5">
+        <h1>{{ category.name }}</h1>
+{#        <h2>글 목록</h2>#}
+        <div class="row">
+            {% for manual in manuals %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ manual.title }}</h5>
+                            <p class="card-text">{{ manual.content|truncatewords:20 }}</p>
+                            <a href="{% url 'manual_detail' manual.id %}" class="btn btn-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="btn btn-secondary mt-3" href="{% url 'category_list' %}">메인터넌스 전체 카테고리</a>
+    </div>
 {% endblock %}
