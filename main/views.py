@@ -9,6 +9,6 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['post_list'] = Post.objects.all()[3:]  # 최근거 3개만 추가
+        context['post_list'] = Post.objects.order_by('-created_at')[:3]  # 최근거 3개만 추가
         context['categories'] = Category.objects.all()  # 모든 카테고리를 컨텍스트에 추가
         return context

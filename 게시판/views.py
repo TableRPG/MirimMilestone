@@ -11,6 +11,7 @@ from 게시판.models import Post, Comment
 class PostList(ListView):
     model = Post
     template_name = 'post/post_list.html'
+    ordering = ['-created_at']
 
 class PostDetail(DetailView):
     model = Post
